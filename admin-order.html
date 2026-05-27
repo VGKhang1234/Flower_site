@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | 💐 Flower-Forever</title>
+    <!-- Bootstrap CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg"
+       style="background: rgba(170, 96, 106, 0.9)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="admin.html"
+          >Admin | 💐 Flower-Forever</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="profile.html"
+                >Xin chào, Quản trị viên</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="logout.html">Đăng xuất</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar position-sticky top-0">
+          <a href="admin.html">📊 Tổng quan</a>
+          <a href="admin-product.html">🛒 QL Sản phẩm</a>
+          <a href="admin-order.html" class="active">📦 QL Đơn hàng</a>
+          <a href="admin-user.html">👥 QL Tài khoản</a>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="col-md-10 p-4">
+          <h2 class="mb-4">Quản lý đơn hàng</h2>
+
+          <!-- Bảng đơn hàng -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                <th>Khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Ngày đặt</th>
+                <th class="text-end">Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              <tr>
+                <td>8d9b</td>
+                <td>Phạm Ngọc Cường</td>
+                <td>0908736894</td>
+                <td>QTSC9, CVPM Quang Trung, Q.12,</td>
+                <td>28/01/2026 12:49</td>
+                <td class="text-end">39,000đ</td>
+                <td><span class="badge bg-secondary">Pending</span></td>
+                <td>
+                  <a
+                    href="admin-order-detail.html?id=8d9b"
+                    class="btn btn-sm btn-primary"
+                    >Xem</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API_ORDERS = 'http://localhost:3000/orders';
+
+document.addEventListener('DOMContentLoaded', fetchOrders);
+
+async function fetchOrders() {
+    try {
+        const response = await fetch(API_ORDERS);
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+        const orders = await response.json();
+        renderOrders(orders);
+    } catch (error) {
+        console.error('Lỗi lấy đơn hàng:', error);
+        document.querySelector('table tbody').innerHTML = `
+            <tr><td colspan="8" class="text-center text-danger">Lỗi tải dữ liệu: ${error.message}</td></tr>
+        `;
+    }
+}
+
+function renderOrders(orders) {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = '';
+
+    orders.forEach(order => {
+        const date = new Date(order.createDate).toLocaleString('vi-VN');
+        const user = order.user || {};
+        const tr = document.createElement('tr');
+        
+        // Xác định màu sắc cho badge trạng thái
+        const statusBadge = order.status === 'pending' ? 'bg-secondary' : 
+                           order.status === 'delivered' ? 'bg-success' : 'bg-danger';
+
+        tr.innerHTML = `
+            <td>${order.id.slice(-6)}</td>
+            <td>${user.name || '(chưa có)'}</td>
+            <td>${user.phone || '(chưa có)'}</td>
+            <td>${user.address || '(chưa có)'}</td>
+            <td>${date}</td>
+            <td class="text-end">${order.total ? order.total.toLocaleString() : '0'}đ</td>
+            <td><span class="badge ${statusBadge}">${order.status}</span></td>
+            <td>
+                <a href="admin-order-detail.html?id=${order.id}" class="btn btn-sm btn-primary">Xem</a>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+    </script>
+  </body>
+</html>

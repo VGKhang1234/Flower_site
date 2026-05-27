@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Đăng nhập</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+    <style>
+      .auth-container {
+        max-width: 450px;
+        margin: 60px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .auth-header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .auth-header h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .auth-header p {
+        color: #999;
+        font-size: 14px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #333;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+      }
+      .form-group input:focus {
+        outline: none;
+        border-color: #c41e3a;
+        box-shadow: 0 0 0 2px rgba(196, 30, 58, 0.1);
+      }
+      .form-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .form-checkbox input {
+        width: auto;
+      }
+      .form-checkbox label {
+        margin: 0;
+        cursor: pointer;
+        font-weight: normal;
+      }
+      .form-checkbox a {
+        color: #c41e3a;
+        text-decoration: none;
+      }
+      .form-group.submit {
+        margin-top: 30px;
+        margin-bottom: 0;
+      }
+      .btn-login {
+        width: 100%;
+        padding: 12px;
+        background: #c41e3a;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .btn-login:hover {
+        background: #a01730;
+      }
+      .auth-divider {
+        display: flex;
+        align-items: center;
+        margin: 25px 0;
+        color: #ccc;
+      }
+      .auth-divider span {
+        padding: 0 10px;
+        color: #999;
+        font-size: 12px;
+      }
+      .auth-divider::before,
+      .auth-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #eee;
+      }
+      .auth-social {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .btn-social {
+        padding: 10px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        color: #666;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+      .btn-social:hover {
+        border-color: #c41e3a;
+        color: #c41e3a;
+      }
+      .auth-footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+      }
+      .auth-footer a {
+        color: #c41e3a;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .error-message {
+        background: #fee;
+        color: #c41e3a;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+            <div class="logo-mark">F</div>
+            <div class="logo-text">Flower Forever</div>
+          </a>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <a href="login.html" class="header-icon-btn" title="Đăng nhập">
+            <i class="fas fa-user"></i>
+          </a>
+          
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+            <li id="logout-link" style="display: none;"><a href="#" class="header-icon-btn" title="Đăng xuất" 
+            id="logout-btn">
+            <i class="fas fa-sign-out"></i>
+          </a></li>
+        </div>
+      </div>
+    </header>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+      <div class="auth-header">
+        <h1>Đăng nhập</h1>
+        <p>Chào mừng bạn quay lại Flower Forever</p>
+      </div>
+
+      <div id="errorMessage" class="error-message"></div>
+
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email hoặc Số điện thoại</label>
+          <input 
+            type="text" 
+            id="email" 
+            placeholder="Nhập email hoặc số điện thoại" 
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input 
+            type="password" 
+            id="password" 
+            placeholder="Nhập mật khẩu" 
+            required
+          />
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="remember" />
+          <label for="remember">Ghi nhớ tôi</label>
+          <a href="#" style="margin-left: auto;">Quên mật khẩu?</a>
+        </div>
+
+        <div class="form-group submit">
+          <button type="submit" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> Đăng nhập
+          </button>
+        </div>
+      </form>
+
+      <div class="auth-divider">
+        <span>HOẶC</span>
+      </div>
+
+      <div class="auth-social">
+        <button class="btn-social">
+          <i class="fab fa-facebook"></i> Facebook
+        </button>
+        <button class="btn-social">
+          <i class="fab fa-google"></i> Google
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        Bạn chưa có tài khoản? <a href="register.html">Đăng ký ngay</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container" style="text-align: center; padding: 20px 0;">
+        © 2025 Flower Forever – Đăng nhập. | <a href="#">Liên hệ</a> | <a href="#">Điều khoản sử dụng</a>
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'http://localhost:3000';
+
+      async function handleLogin(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Validation
+        if (!email || !password) {
+          errorMessage.textContent = 'Vui lòng điền đầy đủ thông tin';
+          errorMessage.style.display = 'block';
+          return;
+        }
+
+        if (password.length < 6) {
+          errorMessage.textContent = 'Mật khẩu phải có ít nhất 6 ký tự';
+          errorMessage.style.display = 'block';
+          return;
+        }
+
+        try {
+          const response = await fetch(`${API_URL}/users/login`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              password: password
+            })
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.access_token) {
+            // Lưu token và user info vào localStorage
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user', JSON.stringify({
+              email: email
+            }));
+
+            errorMessage.style.display = 'none';
+            alert('Đăng nhập thành công! 🎉');
+            // Redirect to index.html
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 500);
+          } else {
+            errorMessage.textContent = data.message || 'Email hoặc mật khẩu không chính xác';
+            errorMessage.style.display = 'block';
+          }
+        } catch (err) {
+          console.error('Login error:', err);
+          errorMessage.textContent = 'Có lỗi xảy ra. Vui lòng thử lại.';
+          errorMessage.style.display = 'block';
+        }
+      }
+
+      // Cập nhật số lượng giỏ hàng
+      function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        const cartCountEl = document.getElementById('cartCount');
+        if (cartCountEl) {
+          cartCountEl.textContent = totalQty;
+        }
+      }
+
+      // Tìm kiếm
+      function handleSearch() {
+        const keyword = document.querySelector('.search-input').value.trim();
+        if (keyword) {
+          window.location.href = `category.html?search=${encodeURIComponent(keyword)}`;
+        }
+      }
+
+      // Check if already logged in
+      function checkLoginStatus() {
+        const token = localStorage.getItem('token');
+        if (token) {
+          window.location.href = 'index.html';
+        }
+      }
+
+      // Attach event listener to form
+      window.addEventListener('DOMContentLoaded', () => {
+        checkLoginStatus();
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+          loginForm.addEventListener('submit', handleLogin);
+        }
+        updateCartCount();
+      });
+
+      // Lắng nghe sự thay đổi trong localStorage
+      window.addEventListener('storage', updateCartCount);
+    </script>
+  </body>
+</html>

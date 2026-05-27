@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | 💐 Flower-Forever</title>
+    <!-- Bootstrap CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg"
+        style="background: rgba(170, 96, 106, 0.9)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="admin.html"
+          >Admin | 💐 Flower-Forever</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="profile.html"
+                >Xin chào, Quản trị viên</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="logout.html">Đăng xuất</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar position-sticky top-0">
+          <a href="admin.html">📊 Tổng quan</a>
+          <a href="admin-product.html">🛒 QL Sản phẩm</a>
+          <a href="admin-order.html" class="active">📦 QL Đơn hàng</a>
+          <a href="admin-user.html">👥 QL Tài khoản</a>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="col-md-10 p-4">
+          <h2 class="mb-4">Chi tiết đơn hàng #8d9b</h2>
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- Thông tin khách hàng -->
+              <div class="card mb-4">
+                <div class="card-body">
+                  <h5>Thông tin khách hàng</h5>
+                  <p><strong>Họ tên:</strong> Phạm Ngọc Cường</p>
+                  <p><strong>Số điện thoại:</strong> 0908736894</p>
+                  <p><strong>Email:</strong> (chưa có)</p>
+                  <p>
+                    <strong>Địa chỉ:</strong> QTSC9, CVPM Quang Trung, Q.12,
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- Thông tin đơn hàng -->
+             
+            </div>
+          </div>
+
+          <!-- Tổng cộng -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h4 class="text-end">Tổng cộng: 0đ</h4>
+            </div>
+          </div>
+
+          <!-- Danh sách sản phẩm -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5>Sản phẩm trong đơn hàng</h5>
+              <table class="table table-bordered align-middle text-end">
+                <thead>
+                  <tr>
+                    <th class="text-start">Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá (VNĐ)</th>
+                    <th>Thành tiền</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-start">
+                      <img
+                        src="public/img/Cà Phê Đen Đá.png"
+                        alt="Cà Phê Đen Đá"
+                        width="80"
+                      />
+                      Cà Phê Đen Đá
+                    </td>
+                    <td>1</td>
+                    <td>39,000đ</td>
+                    <td>39,000đ</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Nút hành động -->
+          <div class="d-flex gap-2">
+            <button class="btn btn-success">Xác nhận giao hàng</button>
+            <button class="btn btn-danger">Hủy đơn hàng</button>
+            <a href="admin-order.html" class="btn btn-secondary">Quay lại</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API_ORDERS = 'http://localhost:3000/orders';
+const API_URL = 'http://localhost:3000/orders';
+const orderId = new URLSearchParams(window.location.search).get('id');
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (orderId) fetchOrderDetail();
+});
+
+async function fetchOrderDetail() {
+  
+    try {
+        const response = await fetch(`${API_ORDERS}/${orderId}`);
+        if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+        }
+        const order = await response.json();
+        
+        // 1. Điền thông tin khách hàng
+        const user = order.user || {};
+        document.querySelector('.card-body').innerHTML = `
+            <p><strong>Mã đơn hàng:</strong> #${order.id}</p>
+            <p><strong>Khách hàng:</strong> ${user.name || '(chưa có)'}</p>
+            <p><strong>Số điện thoại:</strong> ${user.phone || '(chưa có)'}</p>
+            <p><strong>Email:</strong> ${user.email || '(chưa có)'}</p>
+            <p><strong>Địa chỉ:</strong> ${user.address || '(chưa có)'}</p>
+            <p><strong>Ngày đặt:</strong> ${new Date(order.createDate).toLocaleString('vi-VN')}</p>
+            <p><strong>Trạng thái:</strong> <span class="badge bg-info">${order.status}</span></p>
+        `;
+
+        // 2. Render bảng sản phẩm
+        if (order.item && order.item.length > 0) {
+            renderOrderItems(order.item);
+        }
+        
+        // 3. Cập nhật tổng tiền
+        document.querySelector('h4.text-end').innerText = `Tổng cộng: ${order.total ? order.total.toLocaleString() : '0'}đ`;
+
+        // 4. Gán sự kiện cho các nút hành động
+        setupActionButtons(order.id);
+
+    } catch (error) {
+        console.error('Lỗi chi tiết đơn hàng:', error);
+        document.querySelector('.col-md-10').innerHTML = `
+            <div class="alert alert-danger">Lỗi tải thông tin đơn hàng: ${error.message}</div>
+        `;
+    }
+}
+
+function renderOrderItems(items) {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = items.map(line => {
+        // Handle case where product is null or undefined
+        if (!line.product) {
+            return `
+                <tr>
+                    <td class="text-start" colspan="4">Sản phẩm không tìm thấy</td>
+                </tr>
+            `;
+        }
+        return `
+            <tr>
+                <td class="text-start">
+                    <img src="http://localhost:3000/img/${line.product.image || 'no-image.jpg'}" width="64" class="me-2" onerror="this.src='http://localhost:3000/img/no-image.jpg'">
+                    ${line.product.name}
+                </td>
+                <td>${line.quantity}</td>
+                <td>${line.product.price ? line.product.price.toLocaleString() : '0'}đ</td>
+                <td>${line.product.price ? (line.quantity * line.product.price).toLocaleString() : '0'}đ</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function setupActionButtons(id) {
+    const btnConfirm = document.querySelector('.btn-success');
+    const btnCancel = document.querySelector('.btn-danger');
+
+    if (btnConfirm) {
+        btnConfirm.addEventListener('click', () => updateStatus(id, 'delivered'));
+    }
+
+    if (btnCancel) {
+        btnCancel.addEventListener('click', () => updateStatus(id, 'cancelled'));
+    }
+};
+
+async function updateStatus(id, statusName) {
+    const confirmMsg = statusName === 'delivered' ? "Xác nhận đơn hàng này?" : "Hủy đơn hàng này?";
+    if (!confirm(confirmMsg)) return;
+    
+    try {
+        const response = await fetch(`${API_ORDERS}/${id}/${statusName}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            alert('Cập nhật trạng thái thành công!');
+            location.reload();
+        } else {
+            alert('Lỗi: ' + response.statusText);
+        }
+    } catch (error) {
+        console.error('Lỗi:', error);
+        alert('Lỗi khi cập nhật trạng thái');
+    }
+}
+    </script>
+  </body>
+</html>

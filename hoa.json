@@ -1,0 +1,451 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Hoa Hồng Hồng Mộng ",
+      "price": 650000,
+      "image": "",
+      "color": "",
+      "size": "",
+      "main_flower": "",
+      "delivery": "",
+      "description": "Bó hoa hồng hồng phối cùng hoa baby trắng và lá phụ, tạo nên tổng thể ngọt ngào, nữ tính.",
+      "category_id": "1"
+    },
+    {
+      "id": 2,
+      "name": "Hồng Đỏ Rực Rỡ",
+      "price": 820000,
+      "image": "shimmer-5294.jpg",
+      "color": "Đỏ",
+      "size": "50-60cm",
+      "main_flower": "Hồng Nhung",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Sắc đỏ nồng cháy từ những đóa hồng nhung cao cấp, biểu tượng cho tình yêu mãnh liệt và bền vững.",
+      "category_id": 2
+    },
+    {
+      "id": 8,
+      "name": "BST Xuân Dịu Dàng",
+      "price": 650000,
+      "image": "binh-hoa-lan-vai-trang-tri-ngay-tet-dep.jpg",
+      "color": "Tươi tắn",
+      "size": "50cm",
+      "main_flower": "Hoa Xuân",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Hội tụ những loài hoa xuân tươi tắn, gửi gắm thông điệp về sự khởi đầu may mắn và an yên.",
+      "category_id": 3
+    },
+    {
+      "id": 9,
+      "name": "BST Hè Rực Rỡ",
+      "price": 720000,
+      "image": "vuon-hoa-nhiet-doi-moc-chau-601787483a94e.jpg",
+      "color": "Rực rỡ",
+      "size": "60cm",
+      "main_flower": "Hoa Hè",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Bộ sưu tập những loài hoa rực rỡ nhất dưới nắng hè, lan tỏa không khí sôi động và vui tươi.",
+      "category_id": 1
+    },
+    {
+      "id": 10,
+      "name": "Socola Ngọt Ngào",
+      "price": 180000,
+      "image": "360_F_173711487_qbRZkGHv1AD0y14x0jmV12F8G1dxcUbJ.jpg",
+      "color": "Nâu",
+      "size": "100g",
+      "main_flower": "Socola",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Những viên socola đậm đà, tan chảy, là món quà đính kèm hoàn hảo để nhân đôi sự ngọt ngào.",
+      "category_id": 4
+    },
+    {
+      "id": 11,
+      "name": "Gấu Bông Mini",
+      "price": 220000,
+      "image": "MediumPinkTeddybear-1755151165784.webp",
+      "color": "Hồng",
+      "size": "20cm",
+      "main_flower": "Gấu Bông",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Chú gấu bông nhỏ xinh với chất liệu mềm mại, là người bạn đồng hành đáng yêu cùng những bó hoa.",
+      "category_id": 4
+    },
+    {
+      "id": 12,
+      "name": "Hoa Cầm Tay Cô Dâu",
+      "price": 1250000,
+      "image": "hoa-1.jpg",
+      "color": "Trắng/Pastel",
+      "size": "Nhỏ",
+      "main_flower": "Hoa Cưới",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Thiết kế tinh tế, gọn nhẹ và sang trọng, giúp cô dâu tỏa sáng rạng ngời trong ngày trọng đại nhất.",
+      "category_id": 5
+    },
+    {
+      "id": 13,
+      "name": "Hoa Trang Trí Bàn Tiệc",
+      "price": 980000,
+      "image": "hoa-trang-tri-ban-tiec-sinh-nhat-1.jpg",
+      "color": "Đa sắc",
+      "size": "Trung bình",
+      "main_flower": "Hoa Trang Trí",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Kiểu dáng sang trọng, độ cao vừa phải, giúp không gian buổi tiệc thêm phần đẳng cấp và ấm cúng.",
+      "category_id": 5
+    },
+    {
+      "id": 14,
+      "name": "Mặt Trời Hoa Hướng Dương",
+      "price": 720000,
+      "image": "Nhung-bo-hoa-huong-duong-ruc-ro-luon-la-lua-chon-tuyet-voi-de-lam-qua-tang-min-2.jpg",
+      "color": "Vàng",
+      "size": "50-60cm",
+      "main_flower": "Hướng Dương",
+      "delivery": "Trong ngày tại TP.HCM",
+      "description": "Những đóa hướng dương vàng rực luôn hướng về phía mặt trời, đại diện cho niềm tin và hy vọng.",
+      "category_id": 1
+    },
+    {
+      "id": 22,
+      "name": "aaaa",
+      "price": 11,
+      "image": "cac-loai-hoa-mau-hong-va-y-nghia-1.jpg",
+      "color": "",
+      "size": "",
+      "main_flower": "",
+      "delivery": "",
+      "description": "a",
+      "category_id": "4"
+    },
+    {
+      "name": "",
+      "price": 0,
+      "image": "",
+      "color": "",
+      "size": "",
+      "main_flower": "",
+      "delivery": "",
+      "description": "",
+      "category_id": "1",
+      "id": 23
+    },
+    {
+      "name": "zzzzzz",
+      "price": 1,
+      "image": "C:\\fakepath\\shimmer-5294.jpg",
+      "color": "",
+      "size": "",
+      "main_flower": "",
+      "delivery": "",
+      "description": "qwerty",
+      "category_id": "3",
+      "id": 24
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Bó Hoa Bán Chạy"
+    },
+    {
+      "id": 2,
+      "name": "Hoa Tươi"
+    },
+    {
+      "id": 3,
+      "name": "BST"
+    },
+    {
+      "id": 4,
+      "name": "Quà"
+    },
+    {
+      "id": 5,
+      "name": "Hoa Cưới"
+    },
+    {
+      "id": 6,
+      "name": "Tên mới "
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "email": "admin@example.com",
+      "phone": "0123456789",
+      "address": "123 Admin St, City, Country",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "user123",
+      "email": "user@example.com",
+      "phone": "0987654321",
+      "address": "456 User St, City, Country",
+      "role": "user"
+    },
+    {
+      "email": "vukhoigpsa@gmail.com",
+      "password": "1",
+      "phone": "0909542962",
+      "name": "Vũ Khôi",
+      "address": "1",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "AAA@gmail.com",
+      "password": "111",
+      "phone": "11111111111111111",
+      "name": "aaa",
+      "address": "1",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "email": "123@gmail.com",
+      "password": "09876",
+      "phone": "123456789",
+      "name": "qwertyqqqq",
+      "address": "123",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "email": "asdf@gmail.com",
+      "password": "qwertyu",
+      "phone": "1234567890",
+      "username": "zxcvb",
+      "address": "h",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "email": "qwerty@gmail.com",
+      "password": "123",
+      "phone": "123456789",
+      "username": "ssssssssssssss",
+      "address": "w",
+      "role": "user",
+      "id": 7
+    },
+    {
+      "email": "aaaaa@gmail.com",
+      "password": "lion2006",
+      "phone": "090909090909",
+      "username": "mmmmmmm",
+      "address": "w",
+      "role": "user",
+      "id": 8
+    },
+    {
+      "email": "l@gmail.com",
+      "password": "l",
+      "phone": "11111111",
+      "username": "lllll",
+      "address": "1",
+      "role": "admin",
+      "id": 9
+    }
+  ],
+  "orders": [
+    {
+      "createDate": "2026-02-12T07:36:31.787Z",
+      "total": 1300000,
+      "user": {
+        "id": "0",
+        "email": "",
+        "password": "",
+        "phone": "0909542962",
+        "name": "Vũ Khôi",
+        "address": "a",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 1,
+            "name": "Hoa Hồng Hồng Mộng Mơ",
+            "price": 650000,
+            "image": "cac-loai-hoa-mau-hong-va-y-nghia-1.jpg",
+            "color": "Hồng",
+            "size": "45-50cm",
+            "main_flower": "Hồng Đà Lạt",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Bó hoa hồng hồng phối cùng hoa baby trắng và lá phụ, tạo nên tổng thể ngọt ngào, nữ tính.",
+            "category_id": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "delivered",
+      "id": 1
+    },
+    {
+      "createDate": "2026-02-12T09:48:06.422Z",
+      "total": 360000,
+      "user": {
+        "id": "0",
+        "email": "",
+        "password": "",
+        "phone": "123456789",
+        "name": "a",
+        "address": "a",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 10,
+            "name": "Socola Ngọt Ngào",
+            "price": 180000,
+            "image": "360_F_173711487_qbRZkGHv1AD0y14x0jmV12F8G1dxcUbJ.jpg",
+            "color": "Nâu",
+            "size": "100g",
+            "main_flower": "Socola",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Những viên socola đậm đà, tan chảy, là món quà đính kèm hoàn hảo để nhân đôi sự ngọt ngào.",
+            "category_id": 4
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "delivered",
+      "id": 2
+    },
+    {
+      "createDate": "2026-02-12T07:36:31.787Z",
+      "total": 1300000,
+      "user": {
+        "id": "9",
+        "email": "",
+        "password": "",
+        "phone": "0000000000",
+        "name": "Vũ Khoa",
+        "address": "a",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 1,
+            "name": "Hoa Hồng Hồng Mộng Mơ",
+            "price": 650000,
+            "image": "cac-loai-hoa-mau-hong-va-y-nghia-1.jpg",
+            "color": "Hồng",
+            "size": "45-50cm",
+            "main_flower": "Hồng Đà Lạt",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Bó hoa hồng hồng phối cùng hoa baby trắng và lá phụ, tạo nên tổng thể ngọt ngào, nữ tính.",
+            "category_id": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "canceled",
+      "id": 6
+    },
+    {
+      "createDate": "2026-02-22T04:13:18.484Z",
+      "total": 1160000,
+      "user": {
+        "id": "0",
+        "email": "",
+        "password": "",
+        "phone": "123456789",
+        "name": "abc",
+        "address": "g",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 6,
+            "name": "Săc Hồng Dịu Dàng",
+            "price": 580000,
+            "image": "IMG_4609.jpg",
+            "color": "Hồng",
+            "size": "45-55cm",
+            "main_flower": "Hoa Hồng",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Sự phối hợp tinh tế của các sắc độ hồng khác nhau, mang đến vẻ đẹp nhã nhặn và lãng mạn.",
+            "category_id": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "createDate": "2026-02-23T00:42:10.338Z",
+      "total": 1440000,
+      "user": {
+        "id": "0",
+        "email": "",
+        "password": "",
+        "phone": "1234567890",
+        "username": "zxcvb",
+        "address": "h",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 14,
+            "name": "Mặt Trời Hoa Hướng Dương",
+            "price": 720000,
+            "image": "Nhung-bo-hoa-huong-duong-ruc-ro-luon-la-lua-chon-tuyet-voi-de-lam-qua-tang-min-2.jpg",
+            "color": "Vàng",
+            "size": "50-60cm",
+            "main_flower": "Hướng Dương",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Những đóa hướng dương vàng rực luôn hướng về phía mặt trời, đại diện cho niềm tin và hy vọng.",
+            "category_id": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "pending",
+      "id": 8
+    },
+    {
+      "createDate": "2026-02-23T00:48:29.609Z",
+      "total": 1440000,
+      "user": {
+        "id": "0",
+        "email": "",
+        "password": "",
+        "phone": "090909090909",
+        "username": "mmmmmm",
+        "address": "h",
+        "role": "user"
+      },
+      "item": [
+        {
+          "product": {
+            "id": 9,
+            "name": "BST Hè Rực Rỡ",
+            "price": 720000,
+            "image": "vuon-hoa-nhiet-doi-moc-chau-601787483a94e.jpg",
+            "color": "Rực rỡ",
+            "size": "60cm",
+            "main_flower": "Hoa Hè",
+            "delivery": "Trong ngày tại TP.HCM",
+            "description": "Bộ sưu tập những loài hoa rực rỡ nhất dưới nắng hè, lan tỏa không khí sôi động và vui tươi.",
+            "category_id": 1
+          },
+          "quantity": 2
+        }
+      ],
+      "status": "delivered",
+      "id": 9
+    }
+  ]
+}

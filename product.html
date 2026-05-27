@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Trang chủ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          <div class="logo-text">Flower Forever</div>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        
+        <ul class="nav-list">
+    <!-- Các li khác... -->
+    <li id="login-link" style="display: block;"><a href="login.html">Đăng nhập</a></li>
+    <li id="register-link" style="display: block;"><a href="register.html">Đăng ký</a></li>
+    <li id="logout-link" style="display: block;"><a id="logout-btn" >Đăng xuất </a>
+    </li>
+</ul>
+         
+          <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+          
+        </div>
+      </div>
+    </header>
+    <!-- Nội dung sản phẩm -->
+    <section class="section">
+      <div class="container product-detail">
+        <div class="product-detail-image">
+          <div class="product-detail-image-inner"></div>
+        </div>
+
+        <div>
+          <h1 class="product-detail-title">Hoa Hồng Hồng Mộng Mơ</h1>
+          <div class="product-detail-price">650.000đ</div>
+          <p class="product-detail-desc">
+            Bó hoa hồng hồng phối cùng hoa baby trắng và lá phụ, tạo nên tổng
+            thể ngọt ngào, nữ tính. Phù hợp tặng sinh nhật, kỷ niệm, ngày 8/3,
+            20/10 hoặc đơn giản là một lời yêu thương bất ngờ.
+          </p>
+          <p class="product-detail-meta">
+            • Màu sắc chủ đạo: Hồng pastel <br />
+            • Kích thước: Cao khoảng 45–50cm <br />
+            • Hoa chính: Hoa hồng Đà Lạt, hoa baby nhập, lá bạc, lá phụ trang
+            trí.
+          </p>
+
+          <div class="product-qty-row">
+            <label for="qty">Số lượng</label>
+            <input
+              type="number"
+              id="qty"
+              class="product-qty-input"
+              value="1"
+              min="1"
+            />
+          </div>
+
+         <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px">
+    <button type="button" onclick="addToCart()" class="btn-primary">Thêm vào giỏ hàng</button>
+    <a href="cart.html" class="btn-secondary">Xem giỏ hàng</a>
+</div>
+
+<script>
+function addToCart(productId) {
+    const qty = parseInt(document.getElementById('qty').value) || 1;
+    
+    fetch('add_to_cart.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: productId,
+            name: "Hoa Hồng Hồng Mộng Mơ",
+            price: 650000,
+            qty: qty
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
+            // Có thể cập nhật icon giỏ hàng ở header sau này
+        }
+    })
+    .catch(err => console.error(err));
+}
+</script>
+
+          <p style="font-size: 13px; color: #777; margin-top: 4px">
+            Flower Forever giao nhanh trong ngày tại nội thành, hỗ trợ đính kèm
+            thiệp viết tay miễn phí.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gợi ý sản phẩm liên quan -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Gợi ý thêm cho bạn</h2>
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/shimmer-5294.jpg');
+              "
+            ></div>
+            <div class="product-name">Hồng Đỏ Rực Rỡ</div>
+            <div class="product-price">820.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/ngu-sac-trang.jpg');
+              "
+            ></div>
+            <div class="product-name">Sắc Trắng Thanh Khiết</div>
+            <div class="product-price">690.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/IMG_4609.jpg');
+              "
+            ></div>
+            <div class="product-name">Sắc Hồng Dịu Dàng</div>
+            <div class="product-price">580.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2025 Flower Forever – Chi tiết sản phẩm.
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'http://localhost:3000';
+
+      // Get product ID from URL
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get('id') || '1';
+
+      // Load product detail
+      async function loadProductDetail() {
+        try {
+          const response = await fetch(`${API_URL}/products/${productId}`);
+          const product = await response.json();
+
+          // Update product title and details
+          document.querySelector('.product-detail-title').textContent = product.name;
+          document.querySelector('.product-detail-price').textContent = 
+            product.price.toLocaleString('vi-VN') + 'đ';
+          document.querySelector('.product-detail-image-inner').style.backgroundImage = 
+            `url('/img/${product.image}')`;
+
+          // Update description
+          const descElement = document.querySelector('.product-detail-desc');
+          if (descElement) {
+            descElement.textContent = product.description;
+          }
+
+          // Load related products
+          loadRelatedProducts(product.category_name);
+        } catch (err) {
+          console.error('Error loading product:', err);
+        }
+      }
+
+      // Load related products
+      async function loadRelatedProducts(categoryName) {
+        try {
+          const response = await fetch(`${API_URL}/products`);
+          const products = await response.json();
+
+          const relatedProducts = products
+            .filter(p => p.category_name === categoryName && p.id !== productId)
+            .slice(0, 4);
+
+          const gridElement = document.querySelector('.section:last-of-type .product-grid');
+          if (gridElement) {
+            const htmlContent = relatedProducts.map(product => `
+              <div class="product-card">
+                <div class="product-image" style="background-image: url('/img/${product.image}');"></div>
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">${product.price.toLocaleString('vi-VN')}đ</div>
+                <div class="product-action">
+                  <a href="product.html?id=${product.id}" class="btn-secondary">Xem chi tiết</a>
+                </div>
+              </div>
+            `).join('');
+            gridElement.innerHTML = htmlContent;
+          }
+        } catch (err) {
+          console.error('Error loading related products:', err);
+        }
+      }
+
+      // Override addToCart function
+      window.addToCart = function() {
+        const qty = parseInt(document.getElementById('qty').value) || 1;
+        const title = document.querySelector('.product-detail-title').textContent;
+        const priceText = document.querySelector('.product-detail-price').textContent;
+        const price = parseInt(priceText.replace(/\D/g, ''));
+
+        // Get or init cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.productId === productId);
+        if (existingItem) {
+          existingItem.qty += qty;
+        } else {
+          const bgImageUrl = document.querySelector('.product-detail-image-inner').style.backgroundImage;
+          const imagePath = bgImageUrl.replace(/url\(['"]?(.*?)['"]?\)/g, '$1');
+          
+          cart.push({
+            productId: productId,  // ObjectId từ MongoDB
+            name: title,
+            price: price,
+            image: imagePath,
+            qty: qty
+          });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        alert(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
+      };
+
+      // Update cart count
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+      }
+
+      // Handle search
+      function handleSearch() {
+        const searchValue = document.querySelector('.search-input').value.trim();
+        if (searchValue) {
+          window.location.href = `category.html?search=${encodeURIComponent(searchValue)}`;
+        }
+      }
+
+      // Update login/logout links
+      function updateAuthLinks() {
+        const token = localStorage.getItem('token');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+        const logoutLink = document.getElementById('logout-link');
+
+        if (token) {
+          loginLink.style.display = 'none';
+          registerLink.style.display = 'none';
+          logoutLink.style.display = 'block';
+          
+          const logoutBtn = document.getElementById('logout-btn');
+          logoutBtn.onclick = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            updateAuthLinks();
+            window.location.href = 'index.html';
+          };
+        } else {
+          loginLink.style.display = 'block';
+          registerLink.style.display = 'block';
+          logoutLink.style.display = 'none';
+        }
+      }
+
+      // Initialize
+      window.addEventListener('DOMContentLoaded', () => {
+        loadProductDetail();
+        updateCartCount();
+        updateAuthLinks();
+      });
+
+      window.addEventListener('storage', () => {
+        updateCartCount();
+        updateAuthLinks();
+      });
+    </script>
+  </body>
+</html>

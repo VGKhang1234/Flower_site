@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | 💐 Flower-Forever</title>
+    <!-- Bootstrap CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg"
+       style="background: rgba(170, 96, 106, 0.9)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="admin.html"
+          >Admin | 💐 Flower-Forever</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="profile.html"
+                >Xin chào, Quản trị viên</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="logout.html">Đăng xuất</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar position-sticky top-0">
+          <a href="admin.html">📊 Tổng quan</a>
+          <a href="admin-product.html">🛒 QL Sản phẩm</a>
+          <a href="admin-order.html">📦 QL Đơn hàng</a>
+          <a href="admin-user.html" class="active">👥 QL Tài khoản</a>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="col-md-10 p-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-4">Quản lý tài khoản</h2>
+            <a href="admin-user-form.html" class="btn btn-primary"
+              >Thêm tài khoản</a
+            >
+          </div>
+
+          <!-- Bảng tài khoản -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+                <th>Vai trò</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              <tr>
+                <td>1</td>
+                <td>Quản Trị Viên</td>
+                <td>admin@gmail.com</td>
+                <td>113</td>
+                <td>QTSC9, CVPM Quang Trung</td>
+                <td><span class="badge bg-danger">Admin</span></td>
+                <td>
+                  <a
+                    href="admin-user-form.html?id=1"
+                    class="btn btn-sm btn-warning"
+                    >Sửa</a
+                  >
+                  <button class="btn btn-sm btn-danger">Xóa</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API_USERS = 'http://localhost:3000/users';
+
+document.addEventListener('DOMContentLoaded', fetchUsers);
+
+async function fetchUsers() {
+    try {
+        const response = await fetch(API_USERS);
+        const users = await response.json();
+        renderUsers(users);
+    } catch (error) {
+        console.error('Lỗi lấy danh sách user:', error);
+    }
+}
+
+function renderUsers(users) {
+    const tbody = document.querySelector('table tbody');
+    tbody.innerHTML = '';
+
+    users.forEach((user, index) => {
+        const roleBadge = user.role === 'admin' ? 'bg-danger' : 'bg-primary';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+            <td>${user.phone || 'N/A'}</td>
+            <td>${user.address || 'N/A'}</td>
+            <td><span class="badge ${roleBadge}">${user.role}</span></td>
+            <td>
+                <a href="admin-user-form.html?id=${user.id}" class="btn btn-sm btn-warning">Sửa</a>
+                <button class="btn btn-sm btn-danger" onclick="deleteUser('${user.id}')">Xóa</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+async function deleteUser(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
+        await fetch(`${API_USERS}/${id}`, { method: 'DELETE' });
+        fetchUsers();
+    }
+}
+window.deleteUser = deleteUser;
+    </script>
+  </body>
+</html>

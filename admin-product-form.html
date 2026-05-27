@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | 💐 Flower-Forever</title>
+    <!-- Bootstrap CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg"
+       style="background: rgba(170, 96, 106, 0.9)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="admin.html"
+          >Admin | 💐 Flower-Forever</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="profile.html"
+                >Xin chào, Quản trị viên</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="logout.html">Đăng xuất</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar position-sticky top-0">
+          <a href="admin.html">📊 Tổng quan</a>
+          <a href="admin-product.html" class="active">🛒 QL Sản phẩm</a>
+          <a href="admin-order.html">📦 QL Đơn hàng</a>
+          <a href="admin-user.html">👥 QL Tài khoản</a>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="col-md-10 p-4">
+          <!-- Form thêm/sửa sản phẩm -->
+          <h2>Thêm / Sửa sản phẩm</h2>
+        <form id="productForm">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label">Tên sản phẩm</label>
+      <input type="text" id="name" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Giá (VNĐ)</label>
+      <input type="number" id="price" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Ảnh sản phẩm (Tên file)</label>
+      <input type="text" id="image" class="form-control" placeholder="vi-du.jpg" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Danh mục</label>
+      <select id="category_id" class="form-select">
+        <option value="65a7f...">Hoa Hồng</option> 
+      </select>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Mô tả</label>
+      <textarea id="description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-warning">Lưu sản phẩm</button>
+      <a href="admin-product.html" class="btn btn-outline-secondary">Hủy</a>
+    </div>
+  </div>
+</form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API_CATEGORIES = 'http://localhost:3000/categories';
+      const API_URL = 'http://localhost:3000/products';
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id'); // Lấy ID từ URL nếu có
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (productId) {
+        prepareEditForm(productId);
+    }
+
+    document.getElementById('productForm').addEventListener('submit', handleFormSubmit);
+});
+
+// 1. Lấy dữ liệu sản phẩm cũ để Sửa
+async function prepareEditForm(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`);
+        const product = await response.json();
+        
+        // Đổ dữ liệu vào form
+        document.getElementById('name').value = product.name;
+        document.getElementById('price').value = product.price;
+        document.getElementById('image').value = product.image;
+        document.getElementById('description').value = product.description;
+        document.getElementById('category_id').value = product.category?.id || product.category_id;
+    } catch (error) {
+        console.error('Lỗi khi tải thông tin sản phẩm:', error);
+    }
+}
+
+// 2. Xử lý khi nhấn nút Lưu (Submit Form)
+async function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const productData = {
+        name: document.getElementById('name').value,
+        price: Number(document.getElementById('price').value),
+        image: document.getElementById('image').value || 'no-image.jpg',
+        description: document.getElementById('description').value,
+        category_id: document.getElementById('category_id').value
+    };
+
+    try {
+        let response;
+        if (productId) {
+            // Chế độ Cập nhật (PUT)
+            response = await fetch(`${API_URL}/${productId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(productData)
+            });
+        } else {
+            // Chế độ Thêm mới (POST)
+            response = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(productData)
+            });
+        }
+
+        if (response.ok) {
+            alert(productId ? 'Cập nhật thành công!' : 'Thêm mới thành công!');
+            window.location.href = 'admin-product.html';
+        } else {
+            const err = await response.json();
+            alert('Lỗi: ' + err.message);
+        }
+    } catch (error) {
+        console.error('Lỗi khi lưu sản phẩm:', error);
+    }
+}
+async function loadCategoriesIntoForm() {
+    try {
+        const response = await fetch(API_CATEGORIES);
+        const categories = await response.json();
+
+        const selectElement = document.querySelector('.form-select');
+        // Xóa các option cũ và đổ 5 danh mục từ DB vào
+        selectElement.innerHTML = categories.map(cat => 
+            `<option value="${cat.id}">${cat.name}</option>`
+        ).join('');
+
+    } catch (error) {
+        console.error("Lỗi tải danh mục:", error);
+    }
+}
+
+// Gọi hàm này khi trang vừa load
+document.addEventListener('DOMContentLoaded', () => {
+    loadCategoriesIntoForm().then(() => {
+        // Sau khi load categories xong mới check xem có phải mode EDIT không
+        if (productId) prepareEditForm(productId);
+    });
+});
+    </script>
+  </body>
+</html>

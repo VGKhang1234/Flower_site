@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | 💐 Flower-Forever</title>
+    <!-- Bootstrap CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="public/css/admin.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg"
+       style="background: rgba(170, 96, 106, 0.9)"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white fw-bold" href="admin.html"
+          >Admin | 💐 Flower-Forever</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="profile.html"
+                >Xin chào, Quản trị viên</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="logout.html">Đăng xuất</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar position-sticky top-0">
+          <a href="admin.html">📊 Tổng quan</a>
+          <a href="admin-product.html" class="active">🛒 QL Sản phẩm</a>
+          <a href="admin-order.html">📦 QL Đơn hàng</a>
+          <a href="admin-user.html">👥 QL Tài khoản</a>
+        </div>
+
+        <!-- Nội dung chính -->
+        <div class="col-md-10 p-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-4">Quản lý sản phẩm</h2>
+            <a href="admin-product-form.html" class="btn btn-primary"
+              >Thêm sản phẩm</a
+            >
+          </div>
+
+          <!-- Bảng sản phẩm -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Sản phẩm</th>
+                <th class="text-end">Giá (VNĐ)</th>
+                <th>Danh mục</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody class="align-middle">
+              <tr>
+                <td>1</td>
+                <td>
+                  <img
+                    src="img/Cà Phê Đen Đá.png"
+                    alt="Cà Phê Đen Đá"
+                    width="64"
+                  />
+                  Cà Phê Đen Đá
+                </td>
+                <td class="text-end">39,000đ</td>
+                <td>Cà phê</td>
+                <td>
+                  <a
+                    href="admin-product-form.html?id=1"
+                    class="btn btn-sm btn-warning"
+                    >Sửa</a
+                  >
+                  <button class="btn btn-sm btn-danger">Xóa</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // URL của API (đảm bảo server Node.js đang chạy ở cổng 3000)
+const API_URL = 'http://localhost:3000/products';
+const BASE_URL = 'http://localhost:3000';
+document.addEventListener('DOMContentLoaded', () => {
+    fetchProducts();
+});
+
+// 1. Hàm lấy danh sách sản phẩm
+async function fetchProducts() {
+    try {
+        const response = await fetch(API_URL);
+        const products = await response.json();
+        renderProducts(products);
+    } catch (error) {
+        console.error('Lỗi khi lấy dữ liệu:', error);
+        alert('Không thể kết nối với server!');
+    }
+}
+
+// 2. Hàm đổ dữ liệu vào bảng HTML
+function renderProducts(products) {
+    const tbody = document.querySelector('table tbody');
+    
+    tbody.innerHTML = ''; // Xóa nội dung cũ (dữ liệu mẫu)
+    
+    products.forEach((product, index) => {
+        const tr = document.createElement('tr');
+       const imageUrl = product.image ? `${BASE_URL}/img/${product.image}` : `${BASE_URL}/img/no-image.jpg`;
+       // Trong vòng lặp products.forEach...
+tr.innerHTML = `
+    <td>${index + 1}</td>
+    <td>
+        <img src="http://localhost:3000/img/${product.image}" width="64" class="me-2">
+        ${product.name}
+    </td>
+    <td class="text-end">${product.price.toLocaleString()}đ</td>
+    <td>${product.category_name}</td> <td>
+        <a href="admin-product-form.html?id=${product.id}" class="btn btn-sm btn-warning">Sửa</a>
+        <button class="btn btn-sm btn-danger" onclick="deleteProduct('${product.id}')">Xóa</button>
+    </td>
+`;
+        tbody.appendChild(tr);
+    });
+}
+
+// 3. Hàm xóa sản phẩm
+async function deleteProduct(id) {
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
+        try {
+            const response = await fetch(`${API_URL}/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                alert('Xóa thành công!');
+                fetchProducts(); // Tải lại danh sách
+            } else {
+                const error = await response.json();
+                alert('Lỗi: ' + error.message);
+            }
+        } catch (err) {
+            console.error('Lỗi khi xóa:', err);
+        }
+    }
+}
+
+// Gán hàm deleteProduct vào window để nút button trong chuỗi HTML có thể gọi được
+window.deleteProduct = deleteProduct;
+    </script>
+  </body>
+</html>

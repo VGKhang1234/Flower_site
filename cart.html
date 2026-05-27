@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Trang chủ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          <div class="logo-text">Flower Forever</div>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        
+        <ul class="nav-list">
+    <!-- Các li khác... -->
+    <li id="login-link" style="display: block;"><a href="login.html">Đăng nhập</a></li>
+    <li id="register-link" style="display: block;"><a href="register.html">Đăng ký</a></li>
+    <li id="logout-link" style="display: block;"><a id="logout-btn" >Đăng xuất </a>
+    </li>
+</ul>
+         
+          <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+          
+        </div>
+      </div>
+    </header>
+
+    <!-- Giỏ hàng -->
+    <section class="cart-section">
+      <div class="container">
+        <h1 style="margin-bottom: 20px;">Giỏ hàng của bạn</h1>
+        <div id="cart-items"></div>
+        
+        <!-- Form checkout -->
+        <form id="order-form" class="mt-4" style="max-width: 600px;">
+          <h3>Thông tin giao hàng</h3>
+          <div class="mb-3">
+            <label for="fullname" class="form-label">Họ và tên</label>
+            <input type="text" id="fullname" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Số điện thoại</label>
+            <input type="tel" id="phone" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Địa chỉ giao hàng</label>
+            <textarea id="address" class="form-control" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning">Xác nhận đặt hàng</button>
+        </form>
+
+        <!-- Total + button clear -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <button id="clear-cart" class="btn btn-outline-danger">Xóa hết giỏ hàng</button>
+          <h4>Tổng cộng: <span id="total">0</span>đ</h4>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2025 Flower Forever – Giỏ hàng.
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'http://localhost:3000';
+
+      // Load and display cart items
+      function loadCart() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsDiv = document.getElementById('cart-items');
+        
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = '<p style="text-align: center; padding: 40px;">Giỏ hàng trống. <a href="category.html">Tiếp tục mua sắm</a></p>';
+          document.getElementById('order-form').style.display = 'none';
+          return;
+        }
+
+        document.getElementById('order-form').style.display = 'block';
+
+        let html = '';
+        let total = 0;
+
+        cart.forEach(item => {
+          const itemTotal = item.price * item.qty;
+          total += itemTotal;
+          html += `
+            <div class="card mb-3 product" style="border: 1px solid #ddd; padding: 15px; background: #f9f9f9;">
+              <div style="display: flex; gap: 20px; align-items: center;">
+                <div style="flex: 0 0 120px;">
+                  <img src="${item.image}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;" alt="${item.name}" />
+                </div>
+                <div style="flex: 1;">
+                  <h5 style="margin: 0 0 10px 0;">${item.name}</h5>
+                  <p style="margin: 5px 0; color: #999;">Giá: ${item.price.toLocaleString('vi-VN')}đ</p>
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <label>Số lượng:</label>
+                    <button type="button" class="qty-btn-minus" data-id="${item.productId}" style="padding: 5px 10px; border: 1px solid #ddd; background: white; cursor: pointer;">-</button>
+                    <input type="number" class="quantity" data-id="${item.productId}" value="${item.qty}" min="1" style="width: 50px; padding: 5px; border: 1px solid #ddd; text-align: center;" />
+                    <button type="button" class="qty-btn-plus" data-id="${item.productId}" style="padding: 5px 10px; border: 1px solid #ddd; background: white; cursor: pointer;">+</button>
+                  </div>
+                </div>
+                <div style="text-align: right;">
+                  <p style="font-weight: bold; font-size: 16px;">Tổng: ${itemTotal.toLocaleString('vi-VN')}đ</p>
+                  <button type="button" class="remove-item" data-id="${item.productId}" style="padding: 8px 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Xóa</button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        cartItemsDiv.innerHTML = html;
+        document.getElementById('total').textContent = total.toLocaleString('vi-VN');
+
+        // Add event listeners
+        document.querySelectorAll('.remove-item').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            removeFromCart(id);
+          });
+        });
+
+        document.querySelectorAll('.qty-btn-minus').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            updateQuantity(id, -1);
+          });
+        });
+
+        document.querySelectorAll('.qty-btn-plus').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = e.target.dataset.id;
+            updateQuantity(id, 1);
+          });
+        });
+
+        document.querySelectorAll('.quantity').forEach(input => {
+          input.addEventListener('change', (e) => {
+            const id = e.target.dataset.id;
+            const newQty = parseInt(e.target.value) || 1;
+            setQuantity(id, newQty);
+          });
+        });
+      }
+
+      // Remove item from cart
+      function removeFromCart(productId) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.productId !== productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        loadCart();
+      }
+
+      // Update quantity
+      function updateQuantity(productId, change) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const item = cart.find(i => i.productId === productId);
+        if (item) {
+          item.qty = Math.max(1, item.qty + change);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          loadCart();
+        }
+      }
+
+      // Set specific quantity
+      function setQuantity(productId, qty) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const item = cart.find(i => i.productId === productId);
+        if (item && qty > 0) {
+          item.qty = qty;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          loadCart();
+        }
+      }
+
+      // Clear entire cart
+      document.getElementById('clear-cart').addEventListener('click', () => {
+        if (confirm('Bạn có chắc chắn muốn xóa hết giỏ hàng?')) {
+          localStorage.removeItem('cart');
+          updateCartCount();
+          loadCart();
+        }
+      });
+
+      // Handle order submission
+      document.getElementById('order-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (cart.length === 0) {
+          alert('Giỏ hàng trống!');
+          return;
+        }
+
+        const fullname = document.getElementById('fullname').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+
+        const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        
+        // Format item array properly - map to product IDs
+        const itemArray = cart.map(item => ({
+          product: item.productId,  // This is the MongoDB ObjectId
+          quantity: item.qty
+        }));
+
+        const orderData = {
+          createDate: new Date().toISOString(),
+          total: total,
+          user: {
+            username: fullname,
+            name: fullname,
+            phone: phone,
+            email: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).email : 'guest@example.com',
+            address: address
+          },
+          item: itemArray,
+          status: 'pending'
+        };
+
+        try {
+          const response = await fetch(`${API_URL}/orders`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+          });
+
+          const responseData = await response.json();
+
+          if (response.ok) {
+            alert('Đặt hàng thành công! Cảm ơn bạn đã mua hàng.');
+            localStorage.removeItem('cart');
+            updateCartCount();
+            window.location.href = 'index.html';
+          } else {
+            console.error('Order error:', responseData);
+            alert('Lỗi: ' + (responseData.message || 'Có lỗi xảy ra. Vui lòng thử lại.'));
+          }
+        } catch (err) {
+          console.error('Error creating order:', err);
+          alert('Có lỗi xảy ra. Vui lòng thử lại.');
+        }
+      });
+
+      // Update cart count display
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+      }
+
+      // Handle search
+      function handleSearch() {
+        const searchValue = document.querySelector('.search-input').value.trim();
+        if (searchValue) {
+          window.location.href = `category.html?search=${encodeURIComponent(searchValue)}`;
+        }
+      }
+
+      // Update login/logout links
+      function updateAuthLinks() {
+        const token = localStorage.getItem('token');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+        const logoutLink = document.getElementById('logout-link');
+
+        if (token) {
+          loginLink.style.display = 'none';
+          registerLink.style.display = 'none';
+          logoutLink.style.display = 'block';
+          
+          const logoutBtn = document.getElementById('logout-btn');
+          logoutBtn.onclick = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            updateAuthLinks();
+            window.location.href = 'index.html';
+          };
+        } else {
+          loginLink.style.display = 'block';
+          registerLink.style.display = 'block';
+          logoutLink.style.display = 'none';
+        }
+      }
+
+      // Initialize
+      window.addEventListener('DOMContentLoaded', () => {
+        loadCart();
+        updateCartCount();
+        updateAuthLinks();
+      });
+
+      window.addEventListener('storage', () => {
+        updateCartCount();
+        updateAuthLinks();
+      });
+    </script>
+  </body>
+</html>

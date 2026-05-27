@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Trang chủ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          <div class="logo-text">Flower Forever</div>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        
+        <ul class="nav-list">
+    <!-- Các li khác... -->
+    <li id="login-link" style="display: block;"><a href="login.html">Đăng nhập</a></li>
+    <li id="register-link" style="display: block;"><a href="register.html">Đăng ký</a></li>
+    <li id="logout-link" style="display: block;"><a id="logout-btn" >Đăng xuất </a>
+    </li>
+</ul>
+         
+          <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+          
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div>
+          <h1 class="hero-title">Hoa đẹp cho mọi khoảnh khắc</h1>
+          <p class="hero-subtitle">
+            Flower Forever mang đến những bó hoa tươi được thiết kế tinh tế,
+            giúp bạn gửi gắm yêu thương trong mọi dịp: sinh nhật, chúc mừng,
+            cảm ơn, xin lỗi, ngày cưới…
+          </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <a href="category.html" class="btn-primary">Mua ngay</a>
+            <a href="#best-seller" class="btn-secondary">Xem bó hoa bán chạy</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chủ đề nổi bật -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Chủ đề nổi bật</h2>
+          <p class="section-subtitle">
+            Chọn nhanh theo nhu cầu của bạn – Flower Forever luôn có gợi ý phù
+            hợp.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('/img/gio-hoa-tang-chuc-mung-16.webp');
+              "
+            ></div>
+            <div class="category-name">Sinh nhật</div>
+          </div>
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('/img/Gio-3-400x500.jpg');
+              "
+            ></div>
+            <div class="category-name">Tình yêu</div>
+          </div>
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('/img/ke-hoa-khai-truong-good-luck.jpg.webp');
+              "
+            ></div>
+            <div class="category-name">Chúc mừng</div>
+          </div>
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('/img/binh-hoa-tri-an-nha-giao.jpg');
+              "
+            ></div>
+            <div class="category-name">Tri ân & cảm ơn</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sản phẩm bán chạy -->
+    <section class="section" id="best-seller">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Bó hoa bán chạy</h2>
+          <p class="section-subtitle">
+            Những lựa chọn được khách hàng yêu thích nhất tại Flower Forever.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/cac-loai-hoa-mau-hong-va-y-nghia-1.jpg');
+              "
+            ></div>
+            <div class="product-name">Hoa Hồng Hồng Mộng Mơ</div>
+            <div class="product-price">650.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/Nhung-bo-hoa-huong-duong-ruc-ro-luon-la-lua-chon-tuyet-voi-de-lam-qua-tang-min-2.jpg');
+              "
+            ></div>
+            <div class="product-name">Mặt Trời Hoa Hướng Dương</div>
+            <div class="product-price">720.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/ngu-sac-trang.jpg');
+              "
+            ></div>
+            <div class="product-name">Sắc Trắng Thanh Khiết</div>
+            <div class="product-price">690.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/IMG_4609.jpg');
+              "
+            ></div>
+            <div class="product-name">Sắc Hồng Dịu Dàng</div>
+            <div class="product-price">580.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" style="padding-bottom: 56px">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Về Flower Forever</h2>
+        </div>
+        <p style="max-width: 720px; margin: 0 auto; text-align: center">
+          Chúng tôi mong muốn mang lại niềm vui và vẻ đẹp cho từng khoảnh khắc
+          trong cuộc sống của bạn thông qua những bó hoa tươi được chăm chút
+          tỉ mỉ. Flower Forever cam kết sử dụng hoa tươi chất lượng cao, thiết
+          kế tinh tế và giao hàng đúng hẹn để mỗi món quà bạn gửi đều thật trọn
+          vẹn.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2025 Flower Forever – Cửa hàng hoa tươi & quà tặng.
+      </div>
+    </footer>
+
+    <script>
+      // API URL
+      const API_URL = 'http://localhost:3000';
+
+      // Load products by category ID (only category 1 for index.html)
+      async function loadCategoryProducts() {
+        try {
+          const response = await fetch(`${API_URL}/products`);
+          const products = await response.json();
+          
+          // Filter products for category 1 - "Bó Hoa Bán Chạy"
+          const categoryProducts = products.filter(p => p.category_name === 'Bó Hoa Bán Chạy');
+          
+          // Display only first 4 products in best-seller section
+          const bestSellerGrid = document.querySelector('.product-grid');
+          if (bestSellerGrid) {
+            const htmlContent = categoryProducts.slice(0, 4).map(product => `
+              <div class="product-card">
+                <div class="product-image" style="background-image: url('/img/${product.image}');"></div>
+                <div class="product-name">${product.name}</div>
+                <div class="product-price">${product.price.toLocaleString('vi-VN')}đ</div>
+                <div class="product-action">
+                  <a href="product.html?id=${product.id}" class="btn-secondary">Xem chi tiết</a>
+                </div>
+              </div>
+            `).join('');
+            bestSellerGrid.innerHTML = htmlContent;
+          }
+        } catch (err) {
+          console.error('Error loading products:', err);
+        }
+      }
+
+      // Update cart count
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+      }
+
+      // Handle search
+      function handleSearch() {
+        const searchValue = document.querySelector('.search-input').value.trim();
+        if (searchValue) {
+          // Redirect to category page with search query
+          window.location.href = `category.html?search=${encodeURIComponent(searchValue)}`;
+        }
+      }
+
+      // Update login/logout links
+      function updateAuthLinks() {
+        const token = localStorage.getItem('token');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+        const logoutLink = document.getElementById('logout-link');
+
+        if (token) {
+          loginLink.style.display = 'none';
+          registerLink.style.display = 'none';
+          logoutLink.style.display = 'block';
+          
+          const logoutBtn = document.getElementById('logout-btn');
+          logoutBtn.onclick = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            updateAuthLinks();
+            window.location.href = 'index.html';
+          };
+        } else {
+          loginLink.style.display = 'block';
+          registerLink.style.display = 'block';
+          logoutLink.style.display = 'none';
+        }
+      }
+
+      // Initialize on page load
+      window.addEventListener('DOMContentLoaded', () => {
+        loadCategoryProducts();
+        updateCartCount();
+        updateAuthLinks();
+      });
+
+      // Listen for storage changes (logout from another tab)
+      window.addEventListener('storage', () => {
+        updateCartCount();
+        updateAuthLinks();
+      });
+    </script>
+  </body>
+</html>

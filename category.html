@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Trang chủ</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          <div class="logo-text">Flower Forever</div>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html" class="active">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        
+        <ul class="nav-list">
+    <!-- Các li khác... -->
+    <li id="login-link" style="display: block;"><a href="login.html">Đăng nhập</a></li>
+    <li id="register-link" style="display: block;"><a href="register.html">Đăng ký</a></li>
+    <li id="logout-link" style="display: block;"><a id="logout-btn" >Đăng xuất </a>
+    </li>
+</ul>
+         
+          <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+          
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero nhỏ -->
+    <section class="hero" style="padding: 40px 0 32px">
+      <div class="container">
+        <h1 class="hero-title" style="font-size: 32px">
+          Chọn hoa theo chủ đề & phong cách
+        </h1>
+        <p class="hero-subtitle" style="max-width: 720px">
+          Dễ dàng tìm được bó hoa phù hợp cho dịp bạn cần: từ sinh nhật, khai
+          trương cho đến đám cưới và lời cảm ơn tinh tế.
+        </p>
+      </div>
+    </section>
+
+    <!-- Chủ đề -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Chủ đề gợi ý</h2>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=800');
+              "
+            ></div>
+            <div class="category-name">Sinh nhật</div>
+          </div>
+
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.pexels.com/photos/433527/pexels-photo-433527.jpeg?auto=compress&cs=tinysrgb&w=800');
+              "
+            ></div>
+            <div class="category-name">Tình yêu & lãng mạn</div>
+          </div>
+
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.pexels.com/photos/1028725/pexels-photo-1028725.jpeg?auto=compress&cs=tinysrgb&w=800');
+              "
+            ></div>
+            <div class="category-name">Chúc mừng & khai trương</div>
+          </div>
+
+          <div class="category-card">
+            <div
+              class="category-image"
+              style="
+                background-image: url('https://images.pexels.com/photos/931158/pexels-photo-931158.jpeg?auto=compress&cs=tinysrgb&w=800');
+              "
+            ></div>
+            <div class="category-name">Hoa tặng mẹ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hoa tươi -->
+    <section class="section" id="hoa-tuoi">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Hoa tươi</h2>
+          <p class="section-subtitle">
+            Những mẫu hoa tươi được cắm sẵn, giao nhanh trong ngày.
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+       <div
+  class="product-image"
+  style="background-image: url('/img/shimmer-5294.jpg');"
+></div>
+
+            <div class="product-name">Hồng Đỏ Rực Rỡ</div>
+            <div class="product-price">820.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+              <div
+  class="product-image"
+  style="background-image: url('/img/IMG_4609.jpg');"
+></div>
+            <div class="product-name">Hoa Tulip Pastel</div>
+            <div class="product-price">950.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+              <div
+  class="product-image"
+  style="background-image: url('/img/img-6859-jpg.webp');"
+></div>
+            <div class="product-name">Hoa Cẩm Tú Cầu Xanh</div>
+            <div class="product-price">780.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/eyJidWNrZXQiOiJpbWFnZS1oYW5kbGVyLXByb2QiLCJrZXkiOiJzdXBwbGllci82NTQvUFJPRFVDVF9JTUFHRS9kYmI0M2FlNS0xZDNjLTRmYzEtOThhYy0xZjdkNmZhYzRjYjkucG5nIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo1MDAsImhlaWdodCI6NTA.png');
+              "
+            ></div>
+            <div class="product-name">Hoa Hỗn Hợp Nhiệt Đới</div>
+            <div class="product-price">890.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bộ sưu tập -->
+    <section class="section" id="bo-suu-tap">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Bộ sưu tập theo mùa</h2>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/binh-hoa-lan-vai-trang-tri-ngay-tet-dep.jpg');
+              "
+            ></div>
+            <div class="product-name">BST Xuân Dịu Dàng</div>
+            <div class="product-price">Từ 650.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/vuon-hoa-nhiet-doi-moc-chau-601787483a94e.jpg');
+              "
+            ></div>
+            <div class="product-name">BST Hè Rực Rỡ</div>
+            <div class="product-price">Từ 720.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quà tặng kèm -->
+    <section class="section" id="qua-tang-kem">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Quà tặng kèm</h2>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/Green_and_Black\'s_dark_chocolate_bar_2.jpg');
+              "
+            ></div>
+            <div class="product-name">Socola Ngọt Ngào</div>
+            <div class="product-price">180.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/MediumPinkTeddybear-1755151165784.webp');
+              "
+            ></div>
+            <div class="product-name">Gấu Bông Mini</div>
+            <div class="product-price">220.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hoa cưới -->
+    <section class="section" id="hoa-cuoi">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Hoa cưới</h2>
+        </div>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/FB_IMG_1667571125540_450.jpg');
+              "
+            ></div>
+            <div class="product-name">Hoa Cầm Tay Cô Dâu</div>
+            <div class="product-price">1.250.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div
+              class="product-image"
+              style="
+                background-image: url('/img/hoa-trang-tri-ban-tiec-sinh-nhat-1.jpg');
+              "
+            ></div>
+            <div class="product-name">Hoa Trang Trí Bàn Tiệc</div>
+            <div class="product-price">Từ 980.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2025 Flower Forever – Danh mục & sản phẩm.
+      </div>
+    </footer>
+
+    <script>
+      const API_URL = 'http://localhost:3000';
+
+      // Load all products and filter by categories 2-5
+      async function loadProductsByCategories() {
+        try {
+          const response = await fetch(`${API_URL}/products`);
+          const products = await response.json();
+
+          // Section IDs and corresponding category names (categories 2-5)
+          const sections = [
+            { sectionId: 'hoa-tuoi', categoryName: 'Hoa Tươi' },
+            { sectionId: 'bo-suu-tap', categoryName: 'BST' },
+            { sectionId: 'qua-tang-kem', categoryName: 'Quà' },
+            { sectionId: 'hoa-cuoi', categoryName: 'Hoa Cưới' }
+          ];
+
+          sections.forEach((section) => {
+            const sectionProducts = products.filter(p => p.category_name === section.categoryName);
+
+            const sectionElement = document.getElementById(section.sectionId);
+            if (sectionElement) {
+              const gridElement = sectionElement.querySelector('.product-grid');
+              if (gridElement) {
+                if (sectionProducts.length === 0) {
+                  gridElement.innerHTML = '<p style="text-align: center; padding: 40px; grid-column: 1/-1;">Chưa có sản phẩm trong danh mục này.</p>';
+                } else {
+                  const htmlContent = sectionProducts.slice(0, 4).map(product => `
+                    <div class="product-card">
+                      <div class="product-image" style="background-image: url('/img/${product.image}');"></div>
+                      <div class="product-name">${product.name}</div>
+                      <div class="product-price">${product.price.toLocaleString('vi-VN')}đ</div>
+                      <div class="product-action">
+                        <a href="product.html?id=${product.id}" class="btn-secondary">Xem chi tiết</a>
+                      </div>
+                    </div>
+                  `).join('');
+                  gridElement.innerHTML = htmlContent;
+                }
+              }
+            }
+          });
+        } catch (err) {
+          console.error('Error loading products:', err);
+        }
+      }
+
+      // Update cart count
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const count = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cartCount').textContent = count;
+      }
+
+      // Handle search
+      function handleSearch() {
+        const searchValue = document.querySelector('.search-input').value.trim();
+        if (searchValue) {
+          // Filter and display products based on search
+          console.log('Searching for:', searchValue);
+        }
+      }
+
+      // Update login/logout links
+      function updateAuthLinks() {
+        const token = localStorage.getItem('token');
+        const loginLink = document.getElementById('login-link');
+        const registerLink = document.getElementById('register-link');
+        const logoutLink = document.getElementById('logout-link');
+
+        if (token) {
+          loginLink.style.display = 'none';
+          registerLink.style.display = 'none';
+          logoutLink.style.display = 'block';
+          
+          const logoutBtn = document.getElementById('logout-btn');
+          logoutBtn.onclick = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            updateAuthLinks();
+            window.location.href = 'index.html';
+          };
+        } else {
+          loginLink.style.display = 'block';
+          registerLink.style.display = 'block';
+          logoutLink.style.display = 'none';
+        }
+      }
+
+      // Initialize on page load
+      window.addEventListener('DOMContentLoaded', () => {
+        loadProductsByCategories();
+        updateCartCount();
+        updateAuthLinks();
+      });
+
+      window.addEventListener('storage', () => {
+        updateCartCount();
+        updateAuthLinks();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flower Forever - Sắc Trắng Thanh Khiết</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="flower.css" />
+    <link rel="stylesheet" href="product.css"/>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">F</div>
+          <div class="logo-text">Flower Forever</div>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li><a href="category.html">Chủ đề</a></li>
+            <li><a href="category.html#hoa-tuoi">Hoa tươi</a></li>
+            <li><a href="category.html#bo-suu-tap">Bộ sưu tập</a></li>
+            <li><a href="category.html#qua-tang-kem">Quà tặng kèm</a></li>
+            <li><a href="category.html#hoa-cuoi">Hoa cưới</a></li>
+          </ul>
+        </nav>
+        
+        <div class="header-actions">
+          <div class="search-box">
+            <input type="text" class="search-input" placeholder="Tìm kiếm hoa..." />
+            <button class="search-btn" onclick="handleSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <a href="login.html" class="header-icon-btn" title="Đăng nhập">
+            <i class="fas fa-user"></i>
+          </a>
+          
+          <a href="cart.html" class="header-icon-btn cart-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Nội dung sản phẩm -->
+    <section class="section">
+      <div class="container product-detail">
+        <div class="product-detail-image">
+          <div class="product-detail-image-inner" id="mainImage" style="background-image: url('img/ngu-sac-trang.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="product-gallery">
+            <div class="gallery-thumb active" onclick="changeImage('img/ngu-sac-trang.jpg')" style="background-image: url('img/ngu-sac-trang.jpg'); background-size: cover;"></div>
+            <div class="gallery-thumb" onclick="changeImage('img/shimmer-5294.jpg')" style="background-image: url('img/shimmer-5294.jpg'); background-size: cover;"></div>
+            <div class="gallery-thumb" onclick="changeImage('img/cac-loai-hoa-mau-hong-va-y-nghia-1.jpg')" style="background-image: url('img/cac-loai-hoa-mau-hong-va-y-nghia-1.jpg'); background-size: cover;"></div>
+          </div>
+        </div>
+
+        <div>
+          <h1 class="product-detail-title">Sắc Trắng Thanh Khiết</h1>
+          <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span style="margin-left: 5px; color: #666;">(4.8 / 5 | 142 đánh giá)</span>
+            </div>
+          </div>
+          
+          <div class="product-detail-price" style="font-size: 28px; color: #c41e3a; margin: 15px 0;">690.000đ</div>
+          
+          <p class="product-detail-desc">
+            Bó hoa trắng tinh khôi tạo nên vẻ đẹp thanh lịch, thuần khiết. Phù hợp cho những dịp trang trọng, lễ cưới, hay bất kỳ lúc nào bạn muốn gửi gắm tình cảm thanh sạch, tinh tế.
+          </p>
+
+          <div class="product-detail-meta-grid">
+            <div class="meta-item">
+              <span class="meta-icon"><i class="fas fa-palette"></i></span>
+              <div>
+                <div style="font-weight: 600;">Màu sắc</div>
+                <div style="color: #666; font-size: 14px;">Trắng tinh khôi</div>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon"><i class="fas fa-ruler-vertical"></i></span>
+              <div>
+                <div style="font-weight: 600;">Kích thước</div>
+                <div style="color: #666; font-size: 14px;">45–50cm</div>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon"><i class="fas fa-flower"></i></span>
+              <div>
+                <div style="font-weight: 600;">Hoa chính</div>
+                <div style="color: #666; font-size: 14px;">Cẩm Tú Cầu & Cúc Họa Mi</div>
+              </div>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon"><i class="fas fa-truck"></i></span>
+              <div>
+                <div style="font-weight: 600;">Giao hàng</div>
+                <div style="color: #666; font-size: 14px;">Trong ngày tại TP.HCM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quantity-section">
+            <label for="qty">Số lượng:</label>
+            <input
+              type="number"
+              id="qty"
+              class="quantity-input"
+              value="1"
+              min="1"
+              max="50"
+            />
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0;">
+            <button type="button" onclick="addToCart(3)" class="btn-primary" style="flex: 1; min-width: 200px;">
+              <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+            </button>
+            <a href="cart.html" class="btn-secondary" style="flex: 1; min-width: 150px; text-align: center;">
+              <i class="fas fa-shopping-bag"></i> Xem giỏ hàng
+            </a>
+          </div>
+
+          <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin-top: 15px; font-size: 13px; color: #666;">
+            <i class="fas fa-info-circle"></i> <strong>Giao nhanh:</strong> Flower Forever giao nhanh trong ngày tại nội thành, hỗ trợ đính kèm thiệp viết tay miễn phí.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs Thông tin chi tiết -->
+    <section class="section" style="background: #f5f5f5;">
+      <div class="container">
+        <div class="product-tabs">
+          <button class="active" onclick="switchTab(event, 'description')">Mô tả chi tiết</button>
+          <button onclick="switchTab(event, 'care')">Hướng dẫn chăm sóc</button>
+          <button onclick="switchTab(event, 'reviews')">Đánh giá (142)</button>
+          <button onclick="switchTab(event, 'policy')">Chính sách giao hàng</button>
+        </div>
+
+        <!-- Tab Mô tả -->
+        <div id="description" class="tab-content active">
+          <h3 style="margin-bottom: 10px;">Thông tin chi tiết sản phẩm</h3>
+          <p style="color: #666; line-height: 1.8;">
+            <strong>Sắc Trắng Thanh Khiết</strong> là một bó hoa được thiết kế để trao gửi sự thanh lịch, tinh tế và thuần khiết. Sự kết hợp giữa các loài hoa trắng tạo nên vẻ đẹp sang trọng, phù hợp cho những dịp đặc biệt.
+          </p>
+          <p style="color: #666; line-height: 1.8; margin-top: 10px;">
+            <strong>Thành phần bó hoa:</strong>
+          </p>
+          <ul style="color: #666; line-height: 1.8; margin-left: 20px;">
+            <li>10 bông cẩm tú cầu trắng</li>
+            <li>10 bông cúc họa mi trắng</li>
+            <li>Lá xanh trang trí</li>
+            <li>Gói giấy kraft cao cấp</li>
+            <li>Ruy băng trắng</li>
+          </ul>
+          <p style="color: #666; line-height: 1.8; margin-top: 10px;">
+            Phù hợp cho các dịp: Hôn lễ, đám cưới, các sự kiện trang trọng, hoặc bất kỳ lúc nào bạn muốn gửi tình cảm một cách thanh lịch và tinh tế.
+          </p>
+        </div>
+
+        <!-- Tab Hướng dẫn chăm sóc -->
+        <div id="care" class="tab-content">
+          <h3 style="margin-bottom: 10px;">Hướng dẫn chăm sóc hoa</h3>
+          <div style="display: grid; gap: 15px;">
+            <div>
+              <h4 style="color: #c41e3a; margin-bottom: 5px;"><i class="fas fa-droplet"></i> Tưới nước</h4>
+              <p style="color: #666;">Tưới nước mỗi ngày 1-2 lần, sáng hoặc chiều tối. Nước nên đủ ngập phần rễ, không để hoa khô hoàn toàn.</p>
+            </div>
+            <div>
+              <h4 style="color: #c41e3a; margin-bottom: 5px;"><i class="fas fa-sun"></i> Ánh sáng</h4>
+              <p style="color: #666;">Để hoa ở nơi thoáng mát, tránh ánh nắng trực tiếp quá lâu. Nên đặt ở vị trí có ánh sáng gián tiếp, nhiệt độ 18-22°C.</p>
+            </div>
+            <div>
+              <h4 style="color: #c41e3a; margin-bottom: 5px;"><i class="fas fa-cut"></i> Chăm sóc</h4>
+              <p style="color: #666;">Cắt một đoạn từ dưới gốc (khoảng 2-3cm) mỗi 2 ngày. Loại bỏ những lá nằm dưới mặt nước để tránh nấm mốc.</p>
+            </div>
+            <div>
+              <h4 style="color: #c41e3a; margin-bottom: 5px;"><i class="fas fa-flask"></i> Thêm chất dinh dưỡng</h4>
+              <p style="color: #666;">Sử dụng dung dịch dinh dưỡng đi kèm hoặc thêm một chút đường vào nước. Đổi nước mỗi 2 ngày.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Đánh giá -->
+        <div id="reviews" class="tab-content">
+          <h3 style="margin-bottom: 20px;">Đánh giá từ khách hàng</h3>
+          <div class="reviews-container">
+            <div class="review-item">
+              <div class="review-header">
+                <div>
+                  <div class="review-author">Hoàng Hà Phương</div>
+                  <div class="review-date">4 ngày trước</div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p style="color: #666;">Bó hoa trắng thanh lịch quá! Cô dâu rất hài lòng. Giao hàng đúng giờ, đóng gói cẩn thận. Cảm ơn Flower Forever!</p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-header">
+                <div>
+                  <div class="review-author">Vũ Minh Khoa</div>
+                  <div class="review-date">2 tuần trước</div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p style="color: #666;">Hoa đẹp, sang trọng. Lâu tàn rất lâu. Giá hợp lý, chất lượng tốt. Sẽ mua lại!</p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-header">
+                <div>
+                  <div class="review-author">Dương Thị Thanh</div>
+                  <div class="review-date">3 tuần trước</div>
+                </div>
+                <div class="review-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <p style="color: #666;">Bó hoa đẹp lắm, tô điểm tuyệt vời cho cuộc gặp mặt. Nhân viên shop rất hỗ trợ.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Chính sách giao hàng -->
+        <div id="policy" class="tab-content">
+          <h3 style="margin-bottom: 10px;">Chính sách giao hàng</h3>
+          <div style="color: #666; line-height: 1.8;">
+            <p><strong>Giao hàng trong ngày:</strong> Áp dụng cho các đơn hàng đặt trước 17:00 tại nội thành TP.HCM.</p>
+            <p style="margin-top: 10px;"><strong>Phí giao hàng:</strong> 30.000đ cho nội thành (miễn phí từ 500.000đ trở lên). Ngoại thành và tỉnh khác liên hệ để được báo giá.</p>
+            <p style="margin-top: 10px;"><strong>Điều kiện bảo quản:</strong> Hoa sẽ được đóng gói an toàn, nhằm đảm bảo độ tươi mới khi tới tay khách hàng.</p>
+            <p style="margin-top: 10px;"><strong>Chính sách hoàn trả:</strong> Nếu hoa không đạt chất lượng, chúng tôi sẽ thay thế hoặc hoàn tiền 100% trong vòng 24 giờ.</p>
+            <p style="margin-top: 10px;"><strong>Thiệp tặng:</strong> Hỗ trợ viết thiệp tay miễn phí. Khách hàng có thể ghi lời chúc trong đơn hàng.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function changeImage(src) {
+        document.getElementById('mainImage').style.backgroundImage = `url('${src}')`;
+        document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+          thumb.classList.remove('active');
+        });
+        event.target.closest('.gallery-thumb').classList.add('active');
+      }
+
+      function switchTab(event, tabName) {
+        event.preventDefault();
+        document.querySelectorAll('.tab-content').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        document.querySelectorAll('.product-tabs button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.getElementById(tabName).classList.add('active');
+        event.target.classList.add('active');
+      }
+
+      function addToCart(productId) {
+          const qty = parseInt(document.getElementById('qty').value) || 1;
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          
+          const existingItem = cart.find(item => item.id === productId);
+          if (existingItem) {
+              existingItem.qty += qty;
+          } else {
+              cart.push({
+                  id: productId,
+                  name: "Sắc Trắng Thanh Khiết",
+                  price: 690000,
+                  qty: qty
+              });
+          }
+          
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          alert(`Đã thêm ${qty} sản phẩm vào giỏ hàng!`);
+      }
+
+      function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+        document.getElementById('cartCount').textContent = totalQty;
+      }
+
+      function handleSearch() {
+        const keyword = document.querySelector('.search-input').value.trim();
+        if (keyword) {
+          window.location.href = `category.html?search=${encodeURIComponent(keyword)}`;
+        }
+      }
+
+      updateCartCount();
+      window.addEventListener('storage', updateCartCount);
+    </script>
+
+    <!-- Gợi ý sản phẩm liên quan -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="section-title">Sản phẩm liên quan</h2>
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image" style="background-image: url('img/cac-loai-hoa-mau-hong-va-y-nghia-1.jpg');"></div>
+            <div class="product-name">Hoa Hồng Hồng Mộng Mơ</div>
+            <div style="color: #ffc107; font-size: 12px; margin: 5px 0;">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              (128)
+            </div>
+            <div class="product-price">650.000đ</div>
+            <div class="product-action">
+              <a href="product.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image" style="background-image: url('img/Nhung-bo-hoa-huong-duong-ruc-ro-luon-la-lua-chon-tuyet-voi-de-lam-qua-tang-min-2.jpg');"></div>
+            <div class="product-name">Mặt Trời Hoa Hướng Dương</div>
+            <div style="color: #ffc107; font-size: 12px; margin: 5px 0;">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              (156)
+            </div>
+            <div class="product-price">720.000đ</div>
+            <div class="product-action">
+              <a href="product-sunflower.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image" style="background-image: url('img/IMG_4609.jpg');"></div>
+            <div class="product-name">Sắc Hồng Dịu Dàng</div>
+            <div style="color: #ffc107; font-size: 12px; margin: 5px 0;">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              (98)
+            </div>
+            <div class="product-price">580.000đ</div>
+            <div class="product-action">
+              <a href="product-pink.html" class="btn-secondary">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="text-align: center; padding: 20px 0;">
+        © 2025 Flower Forever – Tất cả quyền được bảo lưu. | <a href="#">Liên hệ</a> | <a href="#">Điều khoản sử dụng</a>
+      </div>
+    </footer>
+  </body>
+</html>
